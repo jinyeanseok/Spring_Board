@@ -61,3 +61,17 @@ list에 있는 bno를 가져와라 라고 생각하면됨.
 ```
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>를 맨위에 작성.
 ```
+
+### 게시물 조회의 대한 궁금증
+```
+<select id="read" parameterType="int" resultType="kr.co.vo.BoardVO">
+		SELECT	BNO
+			  , TITLE
+			  , CONTENT
+			  , WRITER
+			  , REGDATE
+		 FROM MP_BOARD
+		 WHERE BNO = #{bno}
+	</select>
+```
+- WHERE BNO = #{bno}를 보시면 WHERE에 BNO값을 넣어줘서 제목을 클릭했을때 그 번호에 해당하는 게시물을 조회하게끔 쿼리를 BoardMapper.xml에 추가해줍니다. 

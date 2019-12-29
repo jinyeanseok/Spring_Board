@@ -28,7 +28,6 @@
 								<td>
 									<a href="/board/readView?bno=${list.bno}"><c:out value="${list.title}"/></a>
 								</td>
-								<td><c:out value="${list.title}" /></td>
 								<td><c:out value="${list.writer}" /></td>
 								<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
 							</tr>
