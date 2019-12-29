@@ -29,4 +29,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.list();
 		// dao.list();는 dao에 있는 list()함수를 호출해서 반환하겠다는 뜻
 	}
+	
+	// 게시물 목록 조회
+	@Override
+	public BoardVO read(int bno) throws Exception {
+
+		return dao.read(bno);
+		// dao에 있는 read(bno)를 호출해서 반환
+	}
 }

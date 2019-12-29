@@ -47,4 +47,16 @@ public class BoardController {
 		
 	}
 	
+	@RequestMapping(value = "/readView", method = RequestMethod.GET)
+	public String read(BoardVO boardVO, Model model) throws Exception{
+		logger.info("read");
+		
+		model.addAttribute("read", service.read(boardVO.getBno()));
+		
+		return "board/readView";
+	}
+	// 현재 게시판 목록에서는 bno값들이 다 있기 때문에 이것들을 불러 와야하는데
+	// bno값들은 BoardVO에 들어 있기 때문에 서비스를 실행할 때 그 번호를 넣어주어서
+	// read라는 이름으로 값을 저장.
+	
 }
