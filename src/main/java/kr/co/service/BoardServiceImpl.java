@@ -1,6 +1,8 @@
 package kr.co.service;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -20,4 +22,11 @@ public class BoardServiceImpl implements BoardService {
 		dao.write(boardVO);
 	}
 
+	// 게시물 목록 조회
+	@Override
+	public List<BoardVO> list() throws Exception {
+
+		return dao.list();
+		// dao.list();는 dao에 있는 list()함수를 호출해서 반환하겠다는 뜻
+	}
 }
