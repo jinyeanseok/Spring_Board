@@ -59,4 +59,34 @@ public class BoardController {
 	// bno값들은 BoardVO에 들어 있기 때문에 서비스를 실행할 때 그 번호를 넣어주어서
 	// read라는 이름으로 값을 저장.
 	
+	// 게시판 수정뷰
+	@RequestMapping(value = "/updateView", method = RequestMethod.GET)
+	public String updateView(BoardVO boardVO, Model model) throws Exception{
+		logger.info("updateView");
+			
+		model.addAttribute("update", service.read(boardVO.getBno()));
+			
+		return "board/updateView";
+		}
+		
+	// 게시판 수정
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(BoardVO boardVO) throws Exception{
+		logger.info("update");
+		
+		service.update(boardVO);
+			
+		return "redirect:/board/list";
+		}
+
+	// 게시판 삭제
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(BoardVO boardVO) throws Exception{
+		logger.info("delete");
+			
+		service.delete(boardVO.getBno());
+			
+		return "redirect:/board/list";
+		}
+	
 }

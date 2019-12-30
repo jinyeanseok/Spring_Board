@@ -37,4 +37,18 @@ public class BoardServiceImpl implements BoardService {
 		return dao.read(bno);
 		// dao에 있는 read(bno)를 호출해서 반환
 	}
+	
+	// 게시물 수정
+	@Override
+	public void update(BoardVO boardVO) throws Exception{
+		
+		dao.update(boardVO);
+	}
+	
+	// 게시글 삭제
+	@Override
+	public void delete(int bno) throws Exception {
+		
+		dao.delete(bno);
+	}
 }
