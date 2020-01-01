@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.dao.BoardDAO;
 import kr.co.vo.BoardVO;
+import kr.co.vo.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -24,10 +25,16 @@ public class BoardServiceImpl implements BoardService {
 
 	// 게시물 목록 조회
 	@Override
-	public List<BoardVO> list() throws Exception {
+	public List<BoardVO> list(Criteria cri) throws Exception {
 
-		return dao.list();
+		return dao.list(cri);
 		// dao.list();는 dao에 있는 list()함수를 호출해서 반환하겠다는 뜻
+	}
+	
+	// 게시물 총 개수
+	@Override
+	public int listCount() throws Exception {
+		return dao.listCount();
 	}
 	
 	// 게시물 목록 조회

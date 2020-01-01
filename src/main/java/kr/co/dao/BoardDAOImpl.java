@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.vo.BoardVO;
+import kr.co.vo.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -24,12 +25,18 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	// 게시물 목록 조회
 	@Override
-	public List<BoardVO> list() throws Exception {
+	public List<BoardVO> list(Criteria cri) throws Exception {
 		
-		return sqlSession.selectList("boardMapper.list");
+		return sqlSession.selectList("boardMapper.listPage", cri);
 			// boardMapper.xml에서 mapper의 namespace가 boardMapper이고
 			// 그중에 id가 list인것을 가져와서 반환해라 라는 의미
 		}
+	
+	// 게시물 총 갯수
+	@Override
+	public int listCount() throws Exception {
+		return sqlSession.selectOne("boardMapper.listCount");
+	}
 	
 	// 게시물 조회
 	@Override
